@@ -1,0 +1,12 @@
+.rd-option{
+    display: flex;
+    flex-direction: column;
+    .p-element{
+        margin-bottom: 5px;
+    }
+}
+
+.form-action{
+    display: flex;
+    justify-content: end;
+}

@@ -1,0 +1,68 @@
+<p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+<div class="btn-mrg-btn col-12"></div>
+<div class="d-flex justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <div class="mb-3">
+                <label class="form-label" jhiTranslate="poll.form.title">Title*</label>
+                <input type="text" class="form-control" name="title" required formControlName="title" />
+    
+                <div *ngIf="editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)">
+                <small
+                    class="form-text text-danger"
+                    *ngIf="editForm.get('title')?.errors?.maxlength"
+                    jhiTranslate="entity.validation.maxlength"
+                    [translateValues]="{ max: 250 }"
+                >
+                    This field cannot be longer than 250 characters.
+                </small>
+
+                <small
+                    class="form-text text-danger"
+                    *ngIf="editForm.get('title')?.errors?.required"
+                    jhiTranslate="entity.validation.required"
+                >
+                    This field cannot be longer than 250 characters.
+                </small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" jhiTranslate="poll.form.description">Description</label>
+                <textarea type="text" class="form-control" name="description" formControlName="description"></textarea>
+    
+                <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+                <small
+                    class="form-text text-danger"
+                    *ngIf="editForm.get('description')?.errors?.maxlength"
+                    jhiTranslate="entity.validation.maxlength"
+                    [translateValues]="{ max: 500 }"
+                >
+                    This field cannot be longer than 250 characters.
+                </small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <p-checkbox [(ngModel)]="poll.needLogin" name="needLogin" [ngModelOptions]="{standalone: true}" [binary]="true"></p-checkbox>
+                <label class="form-label" jhiTranslate="poll.form.needLogin">Need login</label>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" jhiTranslate="poll.form.options">Poll options</label>
+                <p-chips [(ngModel)]="poll.options" styleClass="col-12 options" inputStyleClass="col-12" [ngModelOptions]="{standalone: true}"></p-chips>
+            </div>
+
+            <div class="mb-3" *ngIf="poll.id">
+                <a  *ngIf="poll.id" (click)="copy(poll.hash)"  jhiTranslate="poll.sharedLink">http://localhost/answer/{{poll.hash}}></a>
+                <label class="form-label"></label>
+            </div>
+
+            <div class="mb-3 form-action">
+                <p-button label="back" class="btn-mrg-r" [routerLink]="['']" icon="pi pi-caret-left" ></p-button>
+                <p-button label="save" icon="pi pi-save" (click)="save()"></p-button>
+            </div>
+
+        </form>
+    </div>
+</div>

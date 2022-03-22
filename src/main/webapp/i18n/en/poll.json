@@ -1,0 +1,14 @@
+{
+    "poll":{
+        "form":{
+            "title": "Title of poll",
+            "description": "Description",
+            "needLogin": "Need a login",
+            "options": "Poll options"
+        },
+        "sharedLink": "link to share",
+        "answered": "You already answered the poll",
+        "needLogin": "You need to login to reply!",
+        "onlyMy": "Only polls created by me"
+    }
+}

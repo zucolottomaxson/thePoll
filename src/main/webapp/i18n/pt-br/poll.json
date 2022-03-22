@@ -1,0 +1,14 @@
+{
+    "poll":{
+        "form":{
+            "title": "Titulo da enquete",
+            "description": "Descrição",
+            "needLogin": "Necessário logar",
+            "options": "Opções da enquete"
+        },
+        "sharedLink": "Link para compartilhar",
+        "answered": "Voce já respondeu a enquete",
+        "needLogin": "Você precisa logar para responder!",
+        "onlyMy": "Somente as enquetes criadas por mim"
+    }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="01" author="maxson.zucolotto">
+        <createSequence sequenceName="sequence_answer" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="02" author="maxson.zucolotto">
+        <createTable tableName="answer">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="poll_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="jhi_user_id" type="bigint"/>
+            <column name="created_date" type="timestamp"/>
+            <column name="mac_address" type="varchar(250)"/>
+            <column name="selected_option" type="varchar(250)"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="jhi_user_id"
+                                 baseTableName="answer"
+                                 constraintName="fk_jhi_user_answer"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="poll_id"
+                                 baseTableName="answer"
+                                 constraintName="fk_poll_answer"
+                                 referencedColumnNames="id"
+                                 referencedTableName="poll"/>
+    </changeSet>
+</databaseChangeLog>
